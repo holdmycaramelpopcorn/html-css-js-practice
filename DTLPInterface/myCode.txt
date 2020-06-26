@@ -5,3 +5,4 @@ print(x*y);
 var im1 = new SimpleImage("lion.jpg");
 print(im1.getHeight());
 print(im1);
+//usage of functions and operators
