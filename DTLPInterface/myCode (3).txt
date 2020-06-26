@@ -1,0 +1,62 @@
+//Part 1: Green Screen Algorithm
+var fgim = new SimpleImage("drewRobert.png");
+var bgim = new SimpleImage("dinos.png")
+var op = new SimpleImage(fgim.getWidth(),fgim.getHeight());
+for(var pix of fgim.values())
+{
+    var x = pix.getX();
+    var y = pix.getY();
+    if(pix.getGreen()>(pix.getRed()+pix.getBlue()))
+    {
+        var pix1 = bgim.getPixel(x,y);
+        op.setPixel(x,y,pix1);
+    }
+    else
+    {
+        op.setPixel(x,y,fgim.getPixel(x,y));
+    }
+}
+print(op);
+//Part 2: Bug removal and formation of a 2x2 color grid with red, green, magenta, blue
+var img = new SimpleImage(200,200);
+for (var px of img.values()){
+  var x = px.getX();
+  var y = px.getY();
+  if (x < img.getWidth()/2){
+    px.setRed(255);
+  }
+  if (y>img.getHeight()/2){
+    px.setBlue(255);
+  }
+  if (x>=img.getWidth()/2 && y<=img.getHeight()/2)
+  {
+    px.setGreen(255);
+  }
+}
+print(img);
+//Part 3: Add black border to any image.
+function setBlack(pix)
+{
+    pix.setRed(0);
+    pix.setGreen(0);
+    pix.setBlue(0);
+    return pix;
+}
+function addBorder(im,th)
+{
+    w=im.getWidth();
+    h=im.getHeight();
+    for(var pix of im.values())
+    {
+        x=pix.getX();
+        y=pix.getY();
+        if(x<=th||y<=th||x>=(w-th)||y>=(h-th))
+        {
+            pix=setBlack(pix);
+        }
+    }
+    return im;
+}
+var im = new SimpleImage("smalllion.jpg");
+im=addBorder(im,10);
+print(im);
