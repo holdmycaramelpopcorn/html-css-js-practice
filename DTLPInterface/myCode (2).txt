@@ -1,0 +1,51 @@
+//Part 1: One third of the picture from the left has to have a red tinge. The next third green and the next third blue.
+var im = new SimpleImage("hilton.jpg");
+var wid=im.getWidth();
+for(var pix of im.values())
+{
+    if((pix.getX())<(wid/3))
+    {
+        pix.setRed(255);
+    }
+    else if((pix.getX())>(wid/3)&&(pix.getX())<((2*wid)/3))
+    {
+        pix.setGreen(255);
+    }
+    else
+    {
+        pix.setBlue(255);
+    }
+}
+print(im);
+//Part 2: Write function to swap Red and Green values of each pixel
+function swapRedGreen(pix)
+{
+    temp=pix.getRed();
+    pix.setRed(pix.getGreen());
+    pix.setGreen(temp);
+    return pix;
+}
+var im1 = new SimpleImage("drewRobert.png");
+for(var pix of im1.values())
+{
+    pix=swapRedGreen(pix);
+}
+print(im1);
+//Part 3: Change the duke blue devil to yellow
+var im2=new SimpleImage("duke_blue_devil.png");
+for(var pix of im2.values())
+{
+    if((pix.getRed())=== 0)
+    {
+        pix.setRed(255);
+        pix.setGreen(255);
+        pix.setBlue(0);
+    }
+    else
+    {
+        pix.setRed(255);
+        pix.setGreen(255);
+        pix.setBlue(255);
+    }
+}
+print(im2);
