@@ -5,3 +5,4 @@ for(var pix of im.values())
     pix.setRed(255);
 }
 print(im);
+//200px by 200px yellow square
